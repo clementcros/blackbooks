@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Book</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ book.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ book.titre }}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ book.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ book.categorie.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('books_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('books_edit', { 'id': book.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+
+
+{% block stylesheets %}
+    <style>
+        body { background-image: url('http://www.intrawallpaper.com/static/images/City_Landscape_Background_B5hx2zA.jpg'); font: 18px/1.5 sans-serif; }
+
+    </style>
+{% endblock %}
+

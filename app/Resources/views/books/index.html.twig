@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Books list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Categorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td><a href="{{ path('books_show', { 'id': book.id }) }}">{{ book.id }}</a></td>
+                <td>{{ book.titre }}</td>
+                <td>{{ book.auteur }}</td>
+                <td>{{ book.categorie.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('books_show', { 'id': book.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('books_edit', { 'id': book.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('books_new') }}">Create a new book</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        body { background-image: url('http://www.intrawallpaper.com/static/images/City_Landscape_Background_B5hx2zA.jpg'); font: 18px/1.5 sans-serif;
+                background-size: cover; background-repeat: no-repeat; text-decoration-color: white;
+
+        }
+    tr {
+        text-align: center; margin: 50px;
+    }
+
+        h1{
+            text-align: center; color:deepskyblue; border-color: #dadada;
+        }
+
+        td, th {
+            color: #880000;
+            text-align: center;
+            position: relative;
+            margin-left: 50px;
+        }
+    </style>
+
+{% endblock %}
+

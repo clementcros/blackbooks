@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}LibraryBundle:Consulting:cat{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Consulting:cat page</h1>
+
+    {% for cat in categories%}
+        <p> {{ cat.nom}}  </p>
+    {%endfor%}
+
+{% endblock %}
