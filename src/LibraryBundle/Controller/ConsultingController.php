@@ -2,6 +2,7 @@
 
 namespace LibraryBundle\Controller;
 
+use LibraryBundle\Entity\Books;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -12,7 +13,10 @@ class ConsultingController extends Controller
      */
     public function booksAction()
     {
+        $entityManager = $this -> getDoctrine();
+        $livres = $entityManager -> getRepository('LibraryBundle:Books') ->findAll();
         return $this->render('LibraryBundle:Consulting:books.html.twig', array(
+            'livres' => $livres
             // ...
         ));
     }
@@ -32,12 +36,14 @@ class ConsultingController extends Controller
     }
 
     /**
-     * @Route("/books/id")
+     * @Route("/books/{id}")
      */
-    public function bookAction()
+    public function bookAction(Books $book)
     {
+
+
         return $this->render('LibraryBundle:Consulting:book.html.twig', array(
-            // ...
+            'book' => $book,
         ));
     }
 
